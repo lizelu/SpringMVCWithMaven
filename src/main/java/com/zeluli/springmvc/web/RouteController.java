@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.zeluli.model.StudentModel;
 
 @Controller
-@RequestMapping(value="/route")
+@RequestMapping(value="/route", produces="text/plain;charset=UTF-8")
 public class RouteController {
 	
 	//将路由映射到相应的jsp页面
@@ -20,13 +20,6 @@ public class RouteController {
 		return "index";
 	}
 	
-	//访问地址：http://localhost:8080/SpringMVCWithMaven/route
-	@RequestMapping(produces = "text/plain;charset=UTF-8")
-	@ResponseBody
-	public String route(HttpServletRequest request) {
-		return "请求地址：" + request.getRequestURI();
-	}
-	
 	//访问地址： http://localhost:8080/SpringMVCWithMaven/route/sub1
 	@RequestMapping(value="/sub1")
 	@ResponseBody
@@ -34,12 +27,12 @@ public class RouteController {
 		return "请求地址：" + request.getRequestURI();
 	}
 	
-	//访问地址：http://localhost:8080/SpringMVCWithMaven/route/sub2/你好
+	//访问地址：http://localhost:8080/SpringMVCWithMaven/route/sub2/app/ios/resource
 	//路径参数
-	@RequestMapping(value="/sub2/{value}")
+	@RequestMapping(value="/sub2/{value1}/{value2}/resource")
 	@ResponseBody
-	public String sub2(HttpServletRequest request, @PathVariable String value) {
-		return "请求地址：" + request.getRequestURI() + " 路径参数参数：" + value;
+	public String sub2(HttpServletRequest request, @PathVariable String value1, @PathVariable String value2) {
+		return "请求地址：" + request.getRequestURI() + " 移动端：" + value1 + " 平台："+ value2;
 	}
 	
 	//获取请求参数
@@ -52,7 +45,7 @@ public class RouteController {
 	
 	//将请求直接映射为Model
 	//http://localhost:8080/SpringMVCWithMaven/route/sub4?studentNumber=12&name=zeluli
-	@RequestMapping(value = "/sub4", produces = "application/json;charset=UTF-8")
+	@RequestMapping(value = "/sub4")
 	@ResponseBody 
 	public String sub4(HttpServletRequest request, StudentModel student) {
 		return  "请求地址:" + request.getRequestURI() + " 参数studentNumber = " + student.getStudentNumber() + "   studentName:" + student.getName();

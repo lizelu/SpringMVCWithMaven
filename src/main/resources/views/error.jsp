@@ -4,9 +4,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>错误信息页面</title>
 </head>
 <body>
-<h1>${message_key}</h1>
+<h1>Error</h1>
+<h1>${errorMessage}</h1>
 </body>
 </html>

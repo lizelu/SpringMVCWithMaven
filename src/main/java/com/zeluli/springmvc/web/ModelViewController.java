@@ -9,9 +9,9 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class ModelViewController {
 	@RequestMapping("/view")
-	public ModelAndView exception(HttpServletRequest request) {
-		ModelAndView modelAndView = new ModelAndView("message");//error页面
-		modelAndView.addObject("message", "Hello world"); //错误信息
+	public ModelAndView message(HttpServletRequest request) {
+		ModelAndView modelAndView = new ModelAndView("message");
+		modelAndView.addObject("message_key", "Hello world"); 
 		return modelAndView;
 	}
 }
